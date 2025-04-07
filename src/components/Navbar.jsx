@@ -37,10 +37,9 @@ const Navbar = ({ user, onLogout }) => {
         <div className="hidden md:flex items-center space-x-6 relative">
           <a href="#" className="text-gray-700 hover:text-blue-600">Home</a>
           <a href="#" className="text-gray-700 hover:text-blue-600">Products</a>
-          <a href="#" className="text-gray-700 hover:text-blue-600">About</a>
           <a href="#" className="text-gray-700 hover:text-blue-600">Contact</a>
 
-          <a href="#" className="text-gray-700 hover:text-blue-600">
+          <a href="/cart" className="text-gray-700 hover:text-blue-600">
             <ShoppingCart size={24} />
           </a>
 
