@@ -4,6 +4,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Navbar from "../components/Navbar";
 import ProductUI from "../components/Products";
+import Footer from "../components/Footer"
+import Electronics from "../assets/electronics.jpeg";
+import Jewellery from "../assets/jewellery.jpg"
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -66,19 +69,13 @@ export default function HomePage() {
 
         <div className="flex justify-center overflow-x-auto gap-6 px-2 sm:px-4 md:px-8 scrollbar-hide">
           {[
-            { title: "Mobiles", img: "/assets/categories/mobiles.png" },
+            { title: "Men's Fashion", img: "/assets/categories/mobiles.png" },
             { title: "Women's Fashion", img: "/assets/categories/women.png" },
-            { title: "Men's Fashion", img: "/assets/categories/men.png" },
-            { title: "Kids & Toys", img: "/assets/categories/kids.png" },
-            { title: "Festivals of Bharat", img: "/assets/categories/festival.png" },
-            { title: "Ethnic Wear", img: "/assets/categories/ethnic.png" },
-            { title: "Mobiles", img: "/assets/categories/mobiles.png" },
-            { title: "Women's Fashion", img: "/assets/categories/women.png" },
-            { title: "Men's Fashion", img: "/assets/categories/men.png" },
-            { title: "Kids & Toys", img: "/assets/categories/kids.png" },
+            { title: "Electronics", img: Electronics },
+            { title: "Jewelery", img: Jewellery },
           ].map((category, index) => (
             <div key={index} className="flex flex-col items-center min-w-[80px]">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-yellow-200 flex items-center justify-center overflow-hidden shadow-md">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full  flex items-center justify-center overflow-hidden shadow-md">
                 <img
                   src={category.img}
                   alt={category.title}
@@ -93,7 +90,7 @@ export default function HomePage() {
 
       <ProductUI />
 
-      
+      <Footer />
     </div>
   );
 }
