@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Navbar from "../components/Navbar";
 import ProductUI from "../components/Products";
 import Footer from "../components/Footer"
-import Electronics from "../assets/electronics.jpeg";
-import Jewellery from "../assets/jewellery.jpg"
+import Electronics from "../assets/electronics.png";
+import Jewellery from "../assets/jewellery.png"
+import MenF from "../assets/men's.png"
+import WomenF from "../assets/women's.png"
+import Banner1 from "../assets/banner1.png"
+import Banner2 from "../assets/banner2.png"
+import Banner3 from "../assets/banner3.png"
+import CategorySearch from "../components/CategorySearch"
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -29,6 +35,7 @@ export default function HomePage() {
   return (
     <div className="bg-gray-50">
       <Navbar user={user} onLogout={handleLogout} />
+      <CategorySearch />
 
       {/* 🔥 Carousel Section */}
       <Carousel
@@ -42,23 +49,23 @@ export default function HomePage() {
       >
         <div>
           <img
-            src="https://plus.unsplash.com/premium_photo-1681398745480-151fc6addaaf?w=500&auto=format&fit=crop&q=60"
+            src= {Banner1}
             alt="Fashion Sale"
-            className="object-cover h-[200px] sm:h-[300px] md:h-[400px] w-full rounded-md"
+            className="object-cover h-auto w-full"
           />
         </div>
         <div>
           <img
-            src="https://plus.unsplash.com/premium_photo-1672883552013-506440b2f11c?w=500&auto=format&fit=crop&q=60"
+            src= {Banner2}
             alt="Electronics"
-            className="object-cover h-[200px] sm:h-[300px] md:h-[400px] w-full rounded-md"
+            className="object-cover h-auto w-full"
           />
         </div>
         <div>
           <img
-            src="https://images.unsplash.com/photo-1616627458733-388ab70cba46?auto=format&fit=crop&w=1600&q=80"
+            src= {Banner3}
             alt="Home Decor"
-            className="object-cover h-[200px] sm:h-[300px] md:h-[400px] w-full rounded-md"
+            className="object-cover h-auto w-full"
           />
         </div>
       </Carousel>
@@ -69,11 +76,12 @@ export default function HomePage() {
 
         <div className="flex justify-center overflow-x-auto gap-6 px-2 sm:px-4 md:px-8 scrollbar-hide">
           {[
-            { title: "Men's Fashion", img: "/assets/categories/mobiles.png" },
-            { title: "Women's Fashion", img: "/assets/categories/women.png" },
+            { title: "Men's Fashion", img: MenF },
+            { title: "Women's Fashion", img: WomenF },
             { title: "Electronics", img: Electronics },
-            { title: "Jewelery", img: Jewellery },
+            { title: "Jewellery", img: Jewellery },
           ].map((category, index) => (
+            <Link to={`/category/${category.title}`} key={index}>
             <div key={index} className="flex flex-col items-center min-w-[80px]">
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full  flex items-center justify-center overflow-hidden shadow-md">
                 <img
@@ -84,6 +92,7 @@ export default function HomePage() {
               </div>
               <p className="text-sm sm:text-base mt-2 text-center">{category.title}</p>
             </div>
+            </Link>
           ))}
         </div>
       </div>
