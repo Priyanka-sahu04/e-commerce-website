@@ -40,10 +40,10 @@ export default function AuthForm() {
   };
 
   return (
-    <div className="min-h-screen bg-blue-400 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-xl shadow-lg w-80">
-        <h2 className="text-2xl font-bold text-center mb-4">User Authentication</h2>
-        <h3 className="text-lg font-semibold text-center mb-4">{isLogin ? "Login" : "Sign Up"}</h3>
+    <div className="min-h-screen bg-neutral-200 flex items-center justify-center">
+      <div className=" bg-neutral-100 p-9 rounded-xl xl:w-100 lg:w-100 sm:w-100 w-90 shadow-xl shadow-gray-400">
+        <h2 className="text-2xl text-neutral-700 font-bold text-center mb-4">User Authentication</h2>
+        <h3 className="text-lg text-neutral-800 font-semibold text-center mb-4">{isLogin ? "Login" : "Sign Up"}</h3>
 
         <form onSubmit={handleAuth} className="space-y-4">
           {!isLogin && (
@@ -72,23 +72,23 @@ export default function AuthForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded">
+          <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded">
             {isLogin ? "Login" : "Sign Up"}
           </button>
         </form>
 
-        <p className="text-center text-sm mt-4">
+        <p className="text-center text-neutral-800 text-sm mt-4">
           {isLogin ? (
             <>
               Don’t have an account?{" "}
-              <span className="text-green-600 cursor-pointer" onClick={() => setIsLogin(false)}>
+              <span className="text-blue-600 cursor-pointer" onClick={() => setIsLogin(false)}>
                 Sign Up here
               </span>
             </>
           ) : (
             <>
               Already have an account?{" "}
-              <span className="text-green-600 cursor-pointer" onClick={() => setIsLogin(true)}>
+              <span className="text-blue-600 cursor-pointer" onClick={() => setIsLogin(true)}>
                 Login here
               </span>
             </>

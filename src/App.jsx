@@ -1,6 +1,6 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AuthForm from "./pages/AuthForm";
+import AuthForm from "./pages/Auth";
 import HomePage from "./pages/HomePage";
 import ProductDetail from "./components/ProductDetail";
 import Cart from "./pages/Cart";
