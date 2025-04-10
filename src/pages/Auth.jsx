@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // 👈 Navigation ke liye
 
 export default function AuthForm() {
@@ -7,6 +7,14 @@ export default function AuthForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // 👇 Redirect to /home if already logged in
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (loggedInUser) {
+      navigate("/home");
+    }
+  }, [navigate]);
 
   const handleAuth = (e) => {
     e.preventDefault();
