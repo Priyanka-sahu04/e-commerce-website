@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import ProductDetail from "./components/ProductDetail";
 import Cart from "./pages/Cart";
 import CategoryProduct from "./pages/CategoryProducts";
+import Payment from "./pages/Payment";
 
 function App() {
   return (

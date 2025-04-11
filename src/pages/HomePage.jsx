@@ -34,18 +34,15 @@ export default function HomePage() {
 
   const categories = [
     { title: "Smartphones", img: Electronics, apiCategory: "smartphones" },
-    { title: "Laptops", img: Electronics, apiCategory: "laptops" },
     { title: "Fragrances", img: Electronics, apiCategory: "fragrances" },
     { title: "Groceries", img: Electronics, apiCategory: "groceries" },
     { title: "Home Decoration", img: Electronics, apiCategory: "home-decoration" },
-    { title: "Tops", img: Electronics, apiCategory: "tops" },
     { title: "Women's Dresses", img: WomenF, apiCategory: "womens-dresses" },
     { title: "Women's Shoes", img: Electronics, apiCategory: "womens-shoes" },
     { title: "Men's Shirts", img: MenF, apiCategory: "mens-shirts" },
     { title: "Men's Shoes", img: Electronics, apiCategory: "mens-shoes" },
     { title: "Men's Watches", img: Electronics, apiCategory: "mens-watches" },
     { title: "Women's Watches", img: MenF, apiCategory: "womens-watches" },
-    { title: "Women's Bags", img: Electronics, apiCategory: "womens-bags" },
   ];
 
   return (
@@ -87,26 +84,30 @@ export default function HomePage() {
       </Carousel>
 
       {/* 🛍️ Category Section */}
-       <div className="bg-white py-6 mt-6 rounded-lg shadow-md mx-auto max-w-9xl">
-      <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-center">Shop by Category</h2>
+        <div className="bg-white py-6 mt-6 rounded-lg shadow-md mx-auto max-w-9xl">
+          <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-center">Shop by Category</h2>
 
-      <div className="flex justify-center overflow-x-auto gap-6 px-2 sm:px-4 md:px-8 scrollbar-hide">
-        {categories.map((category, index) => (
-          <Link to={`/category/${category.apiCategory}`} key={index}>
-            <div className="flex flex-col items-center min-w-[80px]">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center overflow-hidden shadow-md">
-                <img
-                  src={category.img}
-                  alt={category.title}
-                  className="h-full object-contain"
-                />
-              </div>
-              <p className="text-sm sm:text-base mt-2 text-center">{category.title}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </div>
+          <div className="flex overflow-x-auto gap-6 px-4 sm:justify-center scrollbar-hide scroll-smooth snap-x snap-mandatory">
+            {categories.map((category, index) => (
+              <Link
+                to={`/category/${category.apiCategory}`}
+                key={index}
+                className="snap-start"
+              >
+                <div className="flex flex-col items-center min-w-[80px]">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center overflow-hidden shadow-md">
+                    <img
+                      src={category.img}
+                      alt={category.title}
+                      className="h-full object-contain"
+                    />
+                  </div>
+                  <p className="text-sm sm:text-base mt-2 text-center">{category.title}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
     
       <ProductUI />
 
