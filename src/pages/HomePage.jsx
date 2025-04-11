@@ -32,6 +32,22 @@ export default function HomePage() {
     navigate("/");
   };
 
+  const categories = [
+    { title: "Smartphones", img: Electronics, apiCategory: "smartphones" },
+    { title: "Laptops", img: Electronics, apiCategory: "laptops" },
+    { title: "Fragrances", img: Electronics, apiCategory: "fragrances" },
+    { title: "Groceries", img: Electronics, apiCategory: "groceries" },
+    { title: "Home Decoration", img: Electronics, apiCategory: "home-decoration" },
+    { title: "Tops", img: Electronics, apiCategory: "tops" },
+    { title: "Women's Dresses", img: WomenF, apiCategory: "womens-dresses" },
+    { title: "Women's Shoes", img: Electronics, apiCategory: "womens-shoes" },
+    { title: "Men's Shirts", img: MenF, apiCategory: "mens-shirts" },
+    { title: "Men's Shoes", img: Electronics, apiCategory: "mens-shoes" },
+    { title: "Men's Watches", img: Electronics, apiCategory: "mens-watches" },
+    { title: "Women's Watches", img: MenF, apiCategory: "womens-watches" },
+    { title: "Women's Bags", img: Electronics, apiCategory: "womens-bags" },
+  ];
+
   return (
     <div className="bg-gray-50">
       <Navbar user={user} onLogout={handleLogout} />
@@ -71,19 +87,14 @@ export default function HomePage() {
       </Carousel>
 
       {/* 🛍️ Category Section */}
-      <div className="bg-white py-6 mt-6 rounded-lg shadow-md mx-auto max-w-9xl">
-        <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-center">Shop by Category</h2>
+       <div className="bg-white py-6 mt-6 rounded-lg shadow-md mx-auto max-w-9xl">
+      <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-center">Shop by Category</h2>
 
-        <div className="flex justify-center overflow-x-auto gap-6 px-2 sm:px-4 md:px-8 scrollbar-hide">
-          {[
-            { title: "Men's Fashion", img: MenF },
-            { title: "Women's Fashion", img: WomenF },
-            { title: "Electronics", img: Electronics },
-            { title: "Jewellery", img: Jewellery },
-          ].map((category, index) => (
-            <Link to={`/category/${category.title}`} key={index}>
-            <div key={index} className="flex flex-col items-center min-w-[80px]">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full  flex items-center justify-center overflow-hidden shadow-md">
+      <div className="flex justify-center overflow-x-auto gap-6 px-2 sm:px-4 md:px-8 scrollbar-hide">
+        {categories.map((category, index) => (
+          <Link to={`/category/${category.apiCategory}`} key={index}>
+            <div className="flex flex-col items-center min-w-[80px]">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center overflow-hidden shadow-md">
                 <img
                   src={category.img}
                   alt={category.title}
@@ -92,11 +103,11 @@ export default function HomePage() {
               </div>
               <p className="text-sm sm:text-base mt-2 text-center">{category.title}</p>
             </div>
-            </Link>
-          ))}
-        </div>
+          </Link>
+        ))}
       </div>
-
+    </div>
+    
       <ProductUI />
 
       <Footer />
