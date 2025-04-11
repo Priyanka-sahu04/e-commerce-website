@@ -6,7 +6,6 @@ import Navbar from "../components/Navbar";
 import ProductUI from "../components/Products";
 import Footer from "../components/Footer"
 import Electronics from "../assets/electronics.png";
-import Jewellery from "../assets/jewellery.png"
 import MenF from "../assets/men's.png"
 import WomenF from "../assets/women's.png"
 import Banner1 from "../assets/banner1.png"
@@ -84,31 +83,48 @@ export default function HomePage() {
       </Carousel>
 
       {/* 🛍️ Category Section */}
-        <div className="bg-white py-6 mt-6 rounded-lg shadow-md mx-auto max-w-9xl">
-          <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-center">Shop by Category</h2>
+      <div className="bg-white py-6 mt-6 rounded-lg shadow-md mx-auto max-w-8xl">
+  <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-center">
+    Shop by Category
+  </h2>
 
-          <div className="flex overflow-x-auto gap-6 px-4 sm:justify-center scrollbar-hide scroll-smooth snap-x snap-mandatory">
-            {categories.map((category, index) => (
-              <Link
-                to={`/category/${category.apiCategory}`}
-                key={index}
-                className="snap-start"
-              >
-                <div className="flex flex-col items-center min-w-[80px]">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center overflow-hidden shadow-md">
-                    <img
-                      src={category.img}
-                      alt={category.title}
-                      className="h-full object-contain"
-                    />
-                  </div>
-                  <p className="text-sm sm:text-base mt-2 text-center">{category.title}</p>
-                </div>
-              </Link>
-            ))}
+  <div
+    className="
+      flex 
+      gap-6 
+      px-4 
+      snap-x snap-mandatory scroll-smooth 
+      overflow-x-auto 
+      md:overflow-x-auto 
+      lg:overflow-x-hidden 
+      lg:justify-center 
+      scrollbar-hide md:scrollbar-thin md:scrollbar-thumb-gray-400 md:scrollbar-track-gray-100
+    "
+  >
+    {categories.map((category, index) => (
+      <Link
+        to={`/category/${category.apiCategory}`}
+        key={index}
+        className={`snap-start ${
+          index === 0 ? "ml-2" : index === categories.length - 1 ? "mr-2" : ""
+        }`}
+      >
+        <div className="flex flex-col items-center min-w-[90px] sm:min-w-[100px] md:min-w-[110px]">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center overflow-hidden shadow-md">
+            <img
+              src={category.img}
+              alt={category.title}
+              className="h-full w-full object-contain"
+            />
           </div>
+          <p className="text-sm sm:text-base mt-2 text-center">{category.title}</p>
         </div>
-    
+      </Link>
+    ))}
+  </div>
+</div>
+
+
       <ProductUI />
 
       <Footer />
