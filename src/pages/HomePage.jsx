@@ -5,9 +5,16 @@ import { Carousel } from "react-responsive-carousel";
 import Navbar from "../components/Navbar";
 import ProductUI from "../components/Products";
 import Footer from "../components/Footer"
-import Electronics from "../assets/electronics.png";
-import MenF from "../assets/men's.png"
-import WomenF from "../assets/women's.png"
+import Phone from "../assets/Phone.jpeg"
+import Fragrances from "../assets/Fragrances.jpeg"
+import Groceries from "../assets/Groceries.jpeg"
+import HomeDecor from "../assets/HomeDecor.jpeg"
+import ShoesW from "../assets/ShoesW.jpeg"
+import ShoesM from "../assets/ShoesM.png"
+import WatchM from "../assets/WatchM.png"
+import WatchW from "../assets/WatchW.jpeg"
+import MenF from "../assets/Men'sF.jpeg"
+import WomenF from "../assets/women'sF.png"
 import Banner1 from "../assets/banner1.png"
 import Banner2 from "../assets/banner2.png"
 import Banner3 from "../assets/banner3.png"
@@ -32,16 +39,16 @@ export default function HomePage() {
   };
 
   const categories = [
-    { title: "Smartphones", img: Electronics, apiCategory: "smartphones" },
-    { title: "Fragrances", img: Electronics, apiCategory: "fragrances" },
-    { title: "Groceries", img: Electronics, apiCategory: "groceries" },
-    { title: "Home Decoration", img: Electronics, apiCategory: "home-decoration" },
+    { title: "Smartphones", img: Phone, apiCategory: "smartphones" },
+    { title: "Fragrances", img: Fragrances, apiCategory: "fragrances" },
+    { title: "Groceries", img: Groceries, apiCategory: "groceries" },
+    { title: "Home Decoration", img: HomeDecor, apiCategory: "home-decoration" },
     { title: "Women's Dresses", img: WomenF, apiCategory: "womens-dresses" },
-    { title: "Women's Shoes", img: Electronics, apiCategory: "womens-shoes" },
+    { title: "Women's Shoes", img: ShoesW, apiCategory: "womens-shoes" },
     { title: "Men's Shirts", img: MenF, apiCategory: "mens-shirts" },
-    { title: "Men's Shoes", img: Electronics, apiCategory: "mens-shoes" },
-    { title: "Men's Watches", img: Electronics, apiCategory: "mens-watches" },
-    { title: "Women's Watches", img: MenF, apiCategory: "womens-watches" },
+    { title: "Men's Shoes", img: ShoesM, apiCategory: "mens-shoes" },
+    { title: "Men's Watches", img: WatchM, apiCategory: "mens-watches" },
+    { title: "Women's Watches", img: WatchW, apiCategory: "womens-watches" },
   ];
 
   return (

@@ -84,25 +84,25 @@ export default function ProductDetail() {
             <div>
               <h1 className="text-2xl font-bold mb-3">{product.title}</h1>
               <div className="flex items-center mb-3">
-                <p className="text-red-600 text-xl font-semibold mr-3">
+                <p className="text-grey-600 text-xl font-semibold mr-3">
                   ₹{(product.price * 10).toFixed(0)}
                 </p>
                 <p className="line-through text-gray-400">
                   ₹{(product.price * 25).toFixed(0)}
                 </p>
               </div>
-              <p className="text-sm text-gray-500 mb-4 capitalize">
+              <p className="text-md text-gray-500 mb-4 capitalize">
                 Category: {product.category}
               </p>
-              <p className="text-gray-700 mb-4 text-sm">{product.description}</p>
+              <p className="text-gray-700 mb-4 text-lg">{product.description}</p>
               <span className="inline-block bg-green-600 text-white text-sm px-3 py-1 rounded mb-4">
-                ⭐ {product.rating?.rate} / 5
+               {product.rating?.rate} / 5  ⭐ 
               </span>
             </div>
 
             <button
               onClick={() => handleAddToCart(product)}
-              className="bg-red-600 hover:bg-red-700 transition text-white py-3 mt-4 rounded text-center text-lg font-medium"
+              className="bg-blue-600 hover:bg-blue-700 transition text-white py-3 mt-4 rounded text-center text-lg font-medium"
             >
               ADD TO CART
             </button>
