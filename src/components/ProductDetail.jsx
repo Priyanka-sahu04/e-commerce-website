@@ -85,7 +85,7 @@ export default function ProductDetail() {
               <h1 className="text-2xl font-bold mb-3">{product.title}</h1>
               <div className="flex items-center mb-3">
                 <p className="text-red-600 text-xl font-semibold mr-3">
-                  ₹{(product.price * 20).toFixed(0)}
+                  ₹{(product.price * 10).toFixed(0)}
                 </p>
                 <p className="line-through text-gray-400">
                   ₹{(product.price * 25).toFixed(0)}
