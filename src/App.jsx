@@ -6,6 +6,7 @@ import ProductDetail from "./components/ProductDetail";
 import Cart from "./pages/Cart";
 import CategoryProduct from "./pages/CategoryProducts";
 import Payment from "./pages/Payment";
+import SearchProduct from "./pages/SearchProduct";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/category/:categoryName" element={<CategoryProduct />} />
         <Route path="/payment" element={<Payment />} /> 
+        <Route path="/search/:keyword" element={<SearchProduct />} />
       </Routes>
     </Router>
   );

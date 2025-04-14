@@ -2,54 +2,43 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 
-export default function CategoryProduct() {
-  const { categoryName } = useParams();
+export default function SearchProduct() {
+  const { keyword } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    setLoading(true);
-    setErrorMsg("");
-    setProducts([]);
-
-    fetch(`https://dummyjson.com/products/category/${categoryName}`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Category not found");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        if (data.products && data.products.length > 0) {
-          setProducts(data.products);
-        } else {
-          setErrorMsg("🚫 Product not found in this category.");
-        }
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(`https://dummyjson.com/products/search?q=${keyword}`);
+        const data = await res.json();
+        setProducts(data.products || []);
+      } catch (err) {
+        console.error("Search error:", err);
+        setProducts([]);
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setErrorMsg("🚫 Product not found in this category.");
-        setLoading(false);
-      });
-  }, [categoryName]);
+      }
+    };
+    fetchProducts();
+  }, [keyword]);
 
   return (
     <div>
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 py-6">
         <h2 className="text-2xl font-semibold mb-6 capitalize">
-          Showing products for: {categoryName.replace("-", " ")}
+          Search results for: {decodeURIComponent(keyword)}
         </h2>
 
         {loading ? (
           <p className="text-center text-gray-600">Loading products...</p>
-        ) : errorMsg ? (
-          <p className="text-center text-red-500">{errorMsg}</p>
+        ) : products.length === 0 ? (
+          <p className="text-center text-red-500">No matching products found.</p>
         ) : (
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {products.map((product) => (
+            {products.map(product => (
               <Link
                 key={product.id}
                 to={`/product/${product.id}?source=dummyjson`}
