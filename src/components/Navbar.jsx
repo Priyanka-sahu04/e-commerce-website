@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Home, ShoppingCart } from "lucide-react";
+import { Home, ShoppingCart, Heart } from "lucide-react";
 import Logo from "../assets/logo2.png"; 
 
 const Navbar = ({ user, onLogout }) => {
@@ -41,6 +41,10 @@ const Navbar = ({ user, onLogout }) => {
             <Home size={35} />
           </a>
 
+          <a href="/wishlist" className="text-neutral-100 hover:bg-blue-600 p-2 rounded-full">
+            <Heart size={35} />
+          </a>
+
           <a href="/cart" className="text-neutral-100 hover:bg-blue-600 p-2 rounded-full">
             <ShoppingCart size={35} />
           </a>
@@ -74,6 +78,11 @@ const Navbar = ({ user, onLogout }) => {
           <a href="/home" className="text-neutral-100 hover:bg-blue-600 p-2 rounded-full">
             <Home size={30} />
           </a>
+
+          <a href="/wishlist" className="text-neutral-100 hover:bg-blue-600 p-2 rounded-full">
+            <Heart size={35} />
+          </a>
+
           <a href="/cart" className="text-neutral-100 hover:bg-blue-600 p-2 rounded-full">
             <ShoppingCart size={30} />
           </a>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
+import { Heart } from "lucide-react";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -63,6 +64,33 @@ export default function ProductDetail() {
     alert("✅ Product added to cart!");
   };
 
+  const handleAddToWishlist = (product) => {
+    const existingWishlist = JSON.parse(localStorage.getItem("wishlistItems")) || [];
+  
+    const alreadyInWishlist = existingWishlist.some(
+      (item) => item.id === product.id && item.source === source
+    );
+  
+    if (alreadyInWishlist) {
+      alert("❤️ Product is already in your wishlist!");
+      return;
+    }
+  
+    const item = {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      image: product.image,
+      category: product.category,
+      source,
+    };
+  
+    existingWishlist.push(item);
+    localStorage.setItem("wishlistItems", JSON.stringify(existingWishlist));
+    alert("💖 Product added to wishlist!");
+  };
+  
+
   if (!product) return <p className="text-center mt-10">Loading...</p>;
 
   return (
@@ -100,12 +128,21 @@ export default function ProductDetail() {
               </span>
             </div>
 
-            <button
-              onClick={() => handleAddToCart(product)}
-              className="bg-blue-600 hover:bg-blue-700 transition text-white py-3 mt-4 rounded text-center text-lg font-medium"
-            >
-              ADD TO CART
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="flex-1 bg-blue-600 hover:bg-blue-700 transition text-white py-3 rounded text-center text-lg font-medium"
+              >
+                ADD TO CART
+              </button>
+
+              <button
+                onClick={() => handleAddToWishlist(product)}
+                className="flex items-center justify-center gap-2 flex-1 text-red-500 hover:bg-red-500 hover:text-white transition py-3 px-3 rounded text-lg font-medium"
+              >
+                <Heart size={20} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
